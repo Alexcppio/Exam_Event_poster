@@ -7,7 +7,7 @@ CREATE INDEX [IX_Tickets_max] ON [Tickets_max] ([Quantity]);
 
 CREATE INDEX [IX_Tickets_sold] ON [Tickets_sold] ([Quantity]);
 
-CREATE INDEX [IX_Surnames_Surname] ON [Surnames] ([Surname]);
+CREATE INDEX [IX_Surnames_Surname] ON [Clients] ([Surname]);
 
 CREATE INDEX [IX_Birth_dates_Birth_date] ON [Birth_dates] ([Birth_date]);
 

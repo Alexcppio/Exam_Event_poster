@@ -109,11 +109,6 @@ create table [Tickets_cost]
 [Cost] money not null default 0
 );
 
-create table [Clients]
-(
-[Id] int not null identity(1, 1) primary key
-);
-
 create table [Birth_dates]
 (
 [Id] int not null identity(1, 1) primary key,
@@ -126,30 +121,17 @@ create table [Emails]
 [Email] nvarchar(50) not null check([Email] <> N'')
 );
 
-create table [Surnames]
+create table [Clients]
 (
 [Id] int not null identity(1, 1) primary key,
-[Surname] nvarchar(50) not null check([Surname] <> N'')
-);
-
-create table [Names]
-(
-[Id] int not null identity(1, 1) primary key,
-[Name] nvarchar(50) not null check([Name] <> N'')
-);
-
-create table [Patronymics]
-(
-[Id] int not null identity(1, 1) primary key,
+[Surname] nvarchar(50) not null check([Surname] <> N''),
+[Name] nvarchar(50) not null check([Name] <> N''),
 [Patronymic] nvarchar(50) not null check([Patronymic] <> N'')
 );
 
 create table [Archive]
 (
 [Id] int not null identity(1, 1) primary key,
-[Client_Patronymic] nvarchar(50) not null check([Client_Patronymic] <> N''),
-[Client_Name] nvarchar(50) not null check([Client_Name] <> N''),
-[Client_Surname] nvarchar(50) not null check([Client_Surname] <> N''),
 [Client_Email] nvarchar(50) not null check([Client_Email] <> N''),
 [Client_Birth_date] date not null check ([Client_Birth_date] >= '1900-01-01'),
 [Client_Ticket_cost] money not null default 0,
@@ -306,33 +288,6 @@ create table [Events_Clients]
 references [Events] ([Id]),
 [Client_id] int not null foreign key ([Client_id])
 references [Clients] ([Id])
-);
-
-create table [Clients_Surnames]
-(
-[Id] int not null identity(1, 1) primary key,
-[Client_id] int not null foreign key ([Client_id])
-references [Clients] ([Id]),
-[Surname_id] int not null foreign key ([Surname_id])
-references [Surnames] ([Id])
-);
-
-create table [Clients_Names]
-(
-[Id] int not null identity(1, 1) primary key,
-[Client_id] int not null foreign key ([Client_id])
-references [Clients] ([Id]),
-[Name_id] int not null foreign key ([Name_id])
-references [Names] ([Id])
-);
-
-create table [Clients_Patronymics]
-(
-[Id] int not null identity(1, 1) primary key,
-[Client_id] int not null foreign key ([Client_id])
-references [Clients] ([Id]),
-[Patronymic_id] int not null foreign key ([Patronymic_id])
-references [Patronymics] ([Id])
 );
 
 create table [Clients_Emails]
